@@ -324,6 +324,26 @@ Expected result:
 
 - final sum is `{"sum":100}`
 
+## Screenshots
+
+These are real screenshots from a live local Task 2 run.
+
+- [Node B live service log](screenshots/task2/task2-node-b-live.png)
+- [Cross-node API checks](screenshots/task2/task2-cross-node-checks.png)
+- [Concurrent smoke check](screenshots/task2/task2-concurrency-smoke-check.png)
+
+Node B live service log:
+
+![Task 2 Node B live service log](screenshots/task2/task2-node-b-live.png)
+
+Cross-node API checks:
+
+![Task 2 cross-node API checks](screenshots/task2/task2-cross-node-checks.png)
+
+Concurrent smoke check:
+
+![Task 2 concurrent smoke check](screenshots/task2/task2-concurrency-smoke-check.png)
+
 ## Files to Review
 
 - `task2_spec.md`
