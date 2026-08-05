@@ -1,0 +1,20 @@
+services:
+  abacus-postgres:
+    image: postgres:16-alpine
+    container_name: abacus-postgres
+    environment:
+      POSTGRES_DB: abacus
+      POSTGRES_USER: abacus
+      POSTGRES_PASSWORD: abacus
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U abacus -d abacus"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    volumes:
+      - abacus-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  abacus-postgres-data:
