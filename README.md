@@ -328,9 +328,14 @@ Expected result:
 
 These are real screenshots from a live local Task 2 run.
 
+- [Tests and Docker setup](screenshots/task2/task2-tests-and-docker-setup.png)
 - [Node B live service log](screenshots/task2/task2-node-b-live.png)
 - [Cross-node API checks](screenshots/task2/task2-cross-node-checks.png)
 - [Concurrent smoke check](screenshots/task2/task2-concurrency-smoke-check.png)
+
+Tests and Docker setup:
+
+![Task 2 tests and Docker setup](screenshots/task2/task2-tests-and-docker-setup.png)
 
 Node B live service log:
 
