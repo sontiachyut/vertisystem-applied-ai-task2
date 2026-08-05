@@ -17,6 +17,9 @@ class AbacusStateMissingError(RuntimeError):
     """Raised when the authoritative singleton state row is unexpectedly missing."""
 
 
+POSTGRES_BOOTSTRAP_LOCK_KEY = 80245117
+
+
 @dataclass
 class AbacusRepository:
     engine: Engine
@@ -24,6 +27,7 @@ class AbacusRepository:
 
     def bootstrap(self) -> None:
         with self.session_factory.begin() as session:
+            self._maybe_acquire_bootstrap_lock(session)
             session.execute(
                 text(
                     """
@@ -43,6 +47,14 @@ class AbacusRepository:
                     """
                 )
             )
+
+    def _maybe_acquire_bootstrap_lock(self, session: Session) -> None:
+        if self.engine.dialect.name != "postgresql":
+            return
+        session.execute(
+            text("SELECT pg_advisory_xact_lock(:lock_key)"),
+            {"lock_key": POSTGRES_BOOTSTRAP_LOCK_KEY},
+        )
 
     def get_sum(self) -> int:
         with self.session_factory() as session:
